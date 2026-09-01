@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CFB Signal — Week 1, 2026</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family:-apple-system,Segoe UI,Roboto,sans-serif; margin:0; background:#f4f5f7; color:#15181d; }
+  .wrap { max-width:480px; margin:0 auto; padding:20px 16px 40px; }
+  h1 { font-size:20px; margin:0 0 2px; }
+  .sub { color:#6b7280; font-size:13px; margin-bottom:12px; }
+  .banner { background:#eef2ff; border:1px solid #c7d2fe; color:#3730a3; border-radius:10px;
+             padding:10px 12px; font-size:13px; line-height:1.5; margin-bottom:8px; }
+  .banner b { color:#312e81; }
+  .lbl { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#6b7280; margin:20px 0 8px; }
+  .pick { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:12px 14px; margin-bottom:10px; }
+  .head { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .team { font-size:17px; font-weight:650; }
+  .spread { font-size:17px; font-weight:750; color:#111827; }
+  .mu { color:#6b7280; font-size:14px; }
+  .gtime { color:#6b7280; font-size:12px; margin-top:5px; }
+  .lmove { font-size:12px; margin-top:6px; padding:4px 8px; border-radius:7px; font-variant-numeric:tabular-nums; display:inline-block; }
+  .lmove.toward { background:#e7f6ec; color:#0a7d33; }
+  .lmove.away { background:#fdeceb; color:#b42318; }
+  .lmove.flat { background:#eef0f3; color:#6b7280; }
+  .rlmtag { color:#7c3aed; font-weight:800; }
+  .neu { display:inline-block; font-size:11px; font-weight:700; color:#9a3412; background:#fff4e5;
+          border:1px solid #fed7aa; border-radius:6px; padding:0 6px; margin-left:6px; white-space:nowrap; }
+  .ovl { font-size:12px; margin-top:6px; color:#374151; font-variant-numeric:tabular-nums; }
+  .gs.mv { color:#6b7280; }
+  .model { margin-top:9px; border-top:1px solid #eef0f3; padding-top:8px; }
+  .mrow { display:flex; align-items:center; gap:8px; font-size:14px; padding:2px 0; }
+  .src { width:38px; color:#6b7280; font-weight:600; font-size:12px; }
+  .should { flex:1; color:#374151; } .should b { font-variant-numeric:tabular-nums; }
+  .edge { font-weight:700; font-variant-numeric:tabular-nums; }
+  .edge.up { color:#0a7d33; } .edge.down { color:#b42318; }
+  .flag { font-size:12px; font-weight:800; border-radius:8px; padding:7px 10px; margin:-2px 0 10px; line-height:1.35; }
+  .flag.both { background:#b42318; color:#fff; }
+  .flag.one { background:#fff4e5; color:#9a3412; border:1px solid #fed7aa; }
+  .flip { font-size:11px; font-weight:700; color:#b42318; text-transform:uppercase; background:#fde8e6; border-radius:4px; padding:0 5px; margin-left:4px; }
+  .empty { color:#6b7280; font-style:italic; }
+  .xref { font-size:12px; margin-top:9px; padding:6px 9px; border-radius:8px; font-variant-numeric:tabular-nums; }
+  .xref.agree { background:#e7f6ec; color:#0a7d33; }
+  .xref.mixed { background:#fff4e5; color:#9a3412; }
+  .xref.dis { background:#fdeceb; color:#b42318; }
+  details.longshots summary { cursor:pointer; color:#6b7280; font-size:13px; padding:8px 0; }
+  details.allg { margin-top:22px; }
+  details.allg summary { cursor:pointer; list-style:none; text-align:center; background:#0a7d33;
+        color:#fff; font-size:15px; font-weight:700; padding:14px; border-radius:10px;
+        box-shadow:0 1px 3px rgba(0,0,0,.15); }
+  details.allg summary::-webkit-details-marker { display:none; }
+  details.allg summary::after { content:" \25BE"; opacity:.85; }
+  details.allg[open] summary { border-radius:10px 10px 0 0; }
+  details.allg[open] summary::after { content:" \25B4"; }
+  #gq { width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid #d1d5db; border-radius:8px; font-size:14px; margin:6px 0 10px; }
+  .chip { display:inline-block; font-size:11px; font-weight:700; border-radius:6px; padding:1px 7px; margin-left:4px; white-space:nowrap; }
+  .chip.t3 { background:#0a7d33; color:#fff; }
+  .chip.t2 { background:#e7f6ec; color:#0a7d33; border:1px solid #b7e4c5; }
+  .chip.t1 { background:#fff4e5; color:#9a3412; border:1px solid #fed7aa; }
+  .chip.t0 { background:#eef0f3; color:#6b7280; }
+  .supf { display:block; font-size:13px; color:#374151; margin:2px 0 8px; }
+  .leg { font-size:11px; color:#6b7280; line-height:1.8; margin-bottom:10px; }
+  .grow { border-bottom:1px solid #eef0f3; padding:8px 0; }
+  .ghead { cursor:pointer; }
+  .car { display:inline-block; color:#9ca3af; margin-left:5px; transition:transform .15s; }
+  .gdet, .carddet { display:none; }
+  .gdet { margin:8px 0 4px; }
+  .carddet { margin-top:9px; }
+  .detbtn { margin-top:10px; background:none; border:1px solid #d1d5db; border-radius:8px; color:#374151; font-size:12px; font-weight:600; padding:6px 11px; cursor:pointer; }
+  .sec { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin:9px 0 5px; color:#6b7280; }
+  .sec.drv { color:#0a7d33; } .sec.trk { color:#2563eb; }
+  .drow, .trow { display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:12px; padding:4px 8px; border-radius:6px; margin-bottom:3px; font-variant-numeric:tabular-nums; }
+  .drow { background:#e7f6ec; color:#14532d; } .drow b { font-weight:750; } .drow i { color:#0a7d33; font-style:normal; font-size:11px; }
+  .trow { background:#eff4ff; color:#1e3a8a; } .trow span, .drow span { color:inherit; opacity:.75; }
+  table.cmp { width:100%; border-collapse:collapse; font-size:12px; font-variant-numeric:tabular-nums; margin-top:2px; }
+  table.cmp th, table.cmp td { border:1px solid #eef0f3; padding:5px 6px; text-align:center; }
+  table.cmp th { color:#6b7280; font-weight:600; font-size:11px; }
+  table.cmp td.cl { text-align:left; color:#6b7280; }
+  table.cmp td.win { background:#e7f6ec; color:#14532d; font-weight:750; }
+  .gt { font-weight:600; font-size:14px; }
+  .gm { color:#6b7280; font-weight:400; font-size:12px; margin-left:6px; }
+  .gs { color:#374151; font-size:12px; margin-top:2px; font-variant-numeric:tabular-nums; }
+  .lg { height:20px; width:20px; object-fit:contain; vertical-align:middle; margin-right:5px; }
+  .head .lg { height:24px; width:24px; margin-right:7px; }
+  .lgs { height:16px; width:16px; object-fit:contain; vertical-align:middle; margin:0 3px 0 2px; }
+  .note { background:#fff7ed; border:1px solid #fed7aa; color:#9a3412; border-radius:10px; padding:10px 12px; font-size:13px; margin:14px 0; }
+  .foot { color:#9ca3af; font-size:12px; margin-top:22px; line-height:1.5; }
+  #lock { text-align:center; padding:48px 0; }
+  #lock h1 { margin-bottom:4px; }
+  #lock .lk { color:#6b7280; font-size:14px; margin:6px 0 16px; }
+  #pc { width:100%; box-sizing:border-box; max-width:260px; padding:10px 12px; border:1px solid #d1d5db; border-radius:8px; font-size:16px; }
+  #go { display:block; margin:12px auto 0; padding:9px 20px; border:0; border-radius:8px; background:#111827; color:#fff; font-size:14px; font-weight:600; cursor:pointer; }
+  .lke { color:#b42318; font-size:13px; margin-top:12px; min-height:1em; }
+  @media (prefers-color-scheme: dark) {
+    #pc, #gq { background:#191c22; border-color:#2a2f3a; color:#e5e7eb; }
+    #go { background:#e5e7eb; color:#111827; }
+    body { background:#0f1115; color:#e5e7eb; }
+    .pick { background:#191c22; border-color:#2a2f3a; }
+    .spread { color:#f3f4f6; } .should { color:#cbd5e1; } .model { border-color:#2a2f3a; }
+    .edge.up { color:#4ade80; } .edge.down { color:#f87171; }
+    .banner { background:#1e1b4b; border-color:#3730a3; color:#c7d2fe; } .banner b { color:#e0e7ff; }
+    .note { background:#2a1c0e; border-color:#7c4a1e; color:#fcd9b6; }
+    .lmove.flat { background:#20242c; color:#9ca3af; } .ovl { color:#cbd5e1; }
+    .drow { background:#0f2a19; color:#bbf7d0; } .drow i { color:#4ade80; }
+    .trow { background:#111f3a; color:#bfdbfe; }
+    .detbtn { background:#191c22; border-color:#2a2f3a; color:#cbd5e1; }
+    table.cmp th, table.cmp td { border-color:#2a2f3a; }
+    table.cmp td.cl { color:#9ca3af; } table.cmp td.win { background:#0f2a19; color:#bbf7d0; }
+  }
+  .tabs { display:flex; gap:6px; margin:14px 0 12px; }
+  .tabbtn { flex:1; padding:9px 6px; border:1px solid #d1d5db; background:#fff; border-radius:9px; font-size:14px; font-weight:600; color:#374151; cursor:pointer; }
+  .tabbtn.active { background:#111827; color:#fff; border-color:#111827; }
+  .subtabs { display:flex; gap:6px; margin:4px 0 10px; }
+  .subbtn { flex:1; padding:7px 6px; border:1px solid #d1d5db; background:#fff; border-radius:8px; font-size:13px; font-weight:600; color:#374151; cursor:pointer; }
+  .subbtn.active { background:#1e40af; color:#fff; border-color:#1e40af; }
+  .cnote { font-size:13px; line-height:1.5; border-radius:10px; padding:10px 12px; margin-bottom:10px; }
+  .cnote.lock { background:#ecfdf5; border:1px solid #a7f3d0; color:#065f46; }
+  .cnote.float { background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; }
+  .csel { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:9px 12px; margin-bottom:7px; font-size:14px; display:flex; align-items:baseline; gap:7px; flex-wrap:wrap; }
+  .csel .rk { color:#9ca3af; font-variant-numeric:tabular-nums; min-width:18px; }
+  .csel .cs { font-weight:700; }
+  .csel .cl2 { font-variant-numeric:tabular-nums; color:#111827; }
+  .csel .mu { color:#6b7280; }
+  .csel .ce { margin-left:auto; font-weight:700; color:#047857; font-variant-numeric:tabular-nums; }
+  .csel.bb { border-color:#f59e0b; background:#fffbeb; }
+  .bbtag { background:#f59e0b; color:#fff; border-radius:6px; padding:1px 6px; font-size:11px; font-weight:700; }
+  .stale { color:#7c3aed; font-weight:600; }
+  .mintag { background:#9ca3af; color:#fff; border-radius:6px; padding:1px 6px; font-size:11px; font-weight:700; }
+  .entb { border-radius:6px; padding:1px 7px; font-size:11px; font-weight:700; margin-left:4px; }
+  .entb.entered { background:#dbeafe; color:#1e40af; }
+  .entb.won { background:#16a34a; color:#fff; }
+  .entb.lost { background:#dc2626; color:#fff; }
+  .entb.pushr { background:#9ca3af; color:#fff; }
+  .cnote.noent { background:#f3f4f6; border:1px solid #e5e7eb; color:#6b7280; }
+  @media (prefers-color-scheme: dark) {
+    .tabbtn { background:#191c22; border-color:#2a2f3a; color:#cbd5e1; }
+    .tabbtn.active { background:#e5e7eb; color:#111827; border-color:#e5e7eb; }
+    .subbtn { background:#191c22; border-color:#2a2f3a; color:#cbd5e1; } .subbtn.active { background:#3b82f6; color:#fff; border-color:#3b82f6; }
+    .csel { background:#191c22; border-color:#2a2f3a; } .csel .cl2 { color:#f3f4f6; }
+    .cnote.lock { background:#0f2a19; border-color:#14532d; color:#bbf7d0; }
+    .cnote.float { background:#111f3a; border-color:#1e3a8a; color:#bfdbfe; }
+    .csel.bb { background:#2a1c0e; border-color:#7c4a1e; }
+  }
+</style></head><body>
+<div class="wrap">
+  <div id="lock">
+    <h1>CFB Signal — Week 1, 2026</h1>
+    <p class="lk">Enter the group passcode to view the picks.</p>
+    <input id="pc" type="password" placeholder="Passcode" autocomplete="off">
+    <button id="go" onclick="unlock()">Unlock</button>
+    <div id="err" class="lke"></div>
+  </div>
+  <div id="content"></div>
+</div>
+<script>
+  let ENC = null;
+  const DATA_URL = "https://satchelpig.github.io/cfb-data/enc.json";
+
+  const b64d = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const te = new TextEncoder();
+  const cat = (a,b)=>{const c=new Uint8Array(a.length+b.length);c.set(a);c.set(b,a.length);return c;};
+  const sha256 = async u => new Uint8Array(await crypto.subtle.digest('SHA-256', u));
+  const hex = u => [...u].map(x=>x.toString(16).padStart(2,'0')).join('');
+  async function derive(pass){
+    const km = await crypto.subtle.importKey('raw', te.encode(pass), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:b64d(ENC.salt), iterations:ENC.iters}, km, 256);
+    return new Uint8Array(bits);
+  }
+  async function tryDecrypt(pass){
+    const key = await derive(pass);
+    if(hex(await sha256(cat(key, te.encode('verify')))) !== ENC.verify) return null;
+    const ct = b64d(ENC.ct); let ks = new Uint8Array(0), i = 0;
+    while(ks.length < ct.length){ const ctr=new Uint8Array(4); new DataView(ctr.buffer).setUint32(0,i,false); ks=cat(ks, await sha256(cat(key,ctr))); i++; }
+    const pt = new Uint8Array(ct.length); for(let j=0;j<ct.length;j++) pt[j]=ct[j]^ks[j];
+    return new TextDecoder('utf-8').decode(pt);
+  }
+  function inject(str){
+    const c = document.getElementById('content'); c.innerHTML = str;
+    c.querySelectorAll('script').forEach(o=>{const s=document.createElement('script'); s.textContent=o.textContent; o.replaceWith(s);});
+    document.getElementById('lock').style.display='none';
+  }
+  async function unlock(){
+    const p = document.getElementById('pc').value.trim();
+    const r = await tryDecrypt(p);
+    if(r){ try{localStorage.setItem('cfbpc', p);}catch(e){} inject(r); }
+    else { document.getElementById('err').textContent = 'Wrong passcode — try again.'; }
+  }
+
+  window.addEventListener('DOMContentLoaded', async ()=>{
+    const err = document.getElementById('err');
+    try {
+      const u = DATA_URL + (DATA_URL.indexOf('?')>=0?'&':'?') + 't=' + Date.now();
+      const r = await fetch(u, {cache:'no-store'});
+      if(!r.ok) throw new Error('http '+r.status);
+      ENC = await r.json();
+    } catch(e){ if(err) err.textContent = 'Could not load the latest picks (network?). Refresh to retry.'; return; }
+    document.getElementById('pc').addEventListener('keydown', e=>{ if(e.key==='Enter') unlock(); });
+    let p; try{p=localStorage.getItem('cfbpc');}catch(e){}
+    if(p){ const rr=await tryDecrypt(p); if(rr) inject(rr); }
+  });
+
+</script>
+</body></html>
