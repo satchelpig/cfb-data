@@ -67,6 +67,8 @@
   .gdet { margin:8px 0 4px; }
   .carddet { margin-top:9px; }
   .detbtn { margin-top:10px; background:none; border:1px solid #d1d5db; border-radius:8px; color:#374151; font-size:12px; font-weight:600; padding:6px 11px; cursor:pointer; }
+  .csbtn { margin-left:8px; background:none; border:1px solid #d1d5db; border-radius:7px; color:#6b7280; font-size:11px; font-weight:600; padding:2px 8px; cursor:pointer; white-space:nowrap; }
+  .csdet { display:none; background:#fafbfc; border:1px solid #eef0f3; border-radius:10px; padding:10px 12px; margin:2px 0 10px; }
   .sec { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin:9px 0 5px; color:#6b7280; }
   .sec.drv { color:#0a7d33; } .sec.trk { color:#2563eb; }
   .drow, .trow { display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:12px; padding:4px 8px; border-radius:6px; margin-bottom:3px; font-variant-numeric:tabular-nums; }
@@ -104,6 +106,8 @@
     .drow { background:#0f2a19; color:#bbf7d0; } .drow i { color:#4ade80; }
     .trow { background:#111f3a; color:#bfdbfe; }
     .detbtn { background:#191c22; border-color:#2a2f3a; color:#cbd5e1; }
+    .csbtn { border-color:#2a2f3a; color:#9ca3af; }
+    .csdet { background:#141821; border-color:#2a2f3a; }
     table.cmp th, table.cmp td { border-color:#2a2f3a; }
     table.cmp td.cl { color:#9ca3af; } table.cmp td.win { background:#0f2a19; color:#bbf7d0; }
   }
@@ -114,6 +118,8 @@
   .subbtn { flex:1; padding:7px 6px; border:1px solid #d1d5db; background:#fff; border-radius:8px; font-size:13px; font-weight:600; color:#374151; cursor:pointer; }
   .subbtn.active { background:#1e40af; color:#fff; border-color:#1e40af; }
   .cnote { font-size:13px; line-height:1.5; border-radius:10px; padding:10px 12px; margin-bottom:10px; }
+  .asof { font-size:12px; color:#6b7280; margin:0 0 10px; }
+  .asof b { color:#111827; }
   .cnote.lock { background:#ecfdf5; border:1px solid #a7f3d0; color:#065f46; }
   .cnote.float { background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; }
   .csel { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:9px 12px; margin-bottom:7px; font-size:14px; display:flex; align-items:baseline; gap:7px; flex-wrap:wrap; }
@@ -139,6 +145,7 @@
     .csel { background:#191c22; border-color:#2a2f3a; } .csel .cl2 { color:#f3f4f6; }
     .cnote.lock { background:#0f2a19; border-color:#14532d; color:#bbf7d0; }
     .cnote.float { background:#111f3a; border-color:#1e3a8a; color:#bfdbfe; }
+    .asof b { color:#e5e7eb; }
     .csel.bb { background:#2a1c0e; border-color:#7c4a1e; }
   }
 </style></head><body>
@@ -175,6 +182,8 @@
     return new TextDecoder('utf-8').decode(pt);
   }
   function inject(str){
+    if(window.__cfbInjected) return;   // idempotent: never re-run scripts (avoids re-declaring GAMES)
+    window.__cfbInjected = true;
     const c = document.getElementById('content'); c.innerHTML = str;
     c.querySelectorAll('script').forEach(o=>{const s=document.createElement('script'); s.textContent=o.textContent; o.replaceWith(s);});
     document.getElementById('lock').style.display='none';
